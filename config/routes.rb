@@ -55,7 +55,7 @@ Rails4Api::Application.routes.draw do
   #   end
   #resources :zombies
   #resources :zombies, { subdomain: 'api' }
-  constraints subdomain: 'api' do
+  namespace :api, path: '/'  do
     resources :zombies
   end
 end
