@@ -53,5 +53,9 @@ Rails4Api::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :zombies
+  #resources :zombies
+  #resources :zombies, { subdomain: 'api' }
+  constraints subdomain: 'api' do
+    resources :zombies
+  end
 end
