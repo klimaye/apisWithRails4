@@ -12,4 +12,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def json(document)
+    JSON.parse(document, symbolize_names: true)
+  end
 end
