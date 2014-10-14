@@ -19,4 +19,12 @@ class ListingZombiesTest < ActionDispatch::IntegrationTest
     assert_includes names, 'Joannie'
     refute_includes names, 'John'
   end
+
+  test 'returns zombie by id' do
+    zombie = Zombie.create!(name: 'fav', weapon:'smile')
+    get "/zombies/#{zombie.id}"
+    assert_equal 200, response.status
+    zombie_response = json(response.body)
+    assert_equal zombie.name, zombie_response[:name]
+  end
 end

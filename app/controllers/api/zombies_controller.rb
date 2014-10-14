@@ -7,5 +7,10 @@ module API
       end
       render json: zombies, status: :ok
     end
+
+    def show
+      zombie = Zombie.find(params[:id])
+      render json: zombie, status: :ok
+    end
   end
 end
