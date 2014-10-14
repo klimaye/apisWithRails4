@@ -15,6 +15,7 @@ class ListingZombiesTest < ActionDispatch::IntegrationTest
     assert_equal 200, response.status
 
     zombies = json(response.body)
+    Rails.logger.info response.body
     names = zombies.collect { |z| z[:name] }
     assert_includes names, 'Joannie'
     refute_includes names, 'John'
