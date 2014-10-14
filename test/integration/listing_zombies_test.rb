@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ListingZombiesTest < ActionDispatch::IntegrationTest
   test 'returns list of all zombies' do
-    get '/zombies'
+    get '/zombies', {}, { 'Accept' => Mime::JSON }
     assert_equal 200, response.status
     refute_empty response.body
   end
@@ -11,7 +11,7 @@ class ListingZombiesTest < ActionDispatch::IntegrationTest
     Zombie.create!(name:'John', weapon: 'axe')
     Zombie.create!(name:'Joannie', weapon:'poison')
 
-    get '/zombies?weapon=poison'
+    get '/zombies?weapon=poison', {}, { 'Accept' => Mime::JSON }
     assert_equal 200, response.status
 
     zombies = json(response.body)

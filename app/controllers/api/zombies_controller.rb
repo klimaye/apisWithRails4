@@ -5,7 +5,10 @@ module API
       if weapon = params[:weapon]
         zombies = zombies.where(weapon: weapon)
       end
-      render json: zombies, status: :ok
+      respond_to do |format|
+        format.json { render json: zombies, status: :ok }
+        format.xml { render json: zombies, status: :ok }
+      end
     end
 
     def show
