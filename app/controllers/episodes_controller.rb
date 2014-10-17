@@ -4,6 +4,8 @@ class EpisodesController < ApplicationController
     episode = Episode.new(episode_params)
     if episode.save
       render json: episode, status: :created, location: episode
+    else
+      render json: episode.errors, status: 422
     end
   end
 

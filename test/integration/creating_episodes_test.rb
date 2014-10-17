@@ -21,4 +21,18 @@ class CreatingEpisodesTest < ActionDispatch::IntegrationTest
     episode = json(response.body)
     assert_equal episode_url(episode[:id]), response.location
   end
+
+  test 'does not create episodes with title nil' do
+    body = {
+      episode: { title: nil, description:'abcd' }
+    }.to_json
+    post '/episodes', body,
+      {
+      'Accept' => Mime::JSON,
+      'Content-Type' => Mime::JSON.to_s
+    }
+
+      assert_equal 422, response.status
+      assert_equal Mime::JSON, response.content_type
+  end
 end
