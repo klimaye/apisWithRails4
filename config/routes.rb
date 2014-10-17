@@ -58,4 +58,5 @@ Rails4Api::Application.routes.draw do
   namespace :api, path: '/'  do
     resources :zombies
   end
+  resources :episodes
 end

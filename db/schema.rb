@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012163740) do
+ActiveRecord::Schema.define(version: 20141017025551) do
+
+  create_table "episodes", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "zombies", force: true do |t|
     t.string   "name"
