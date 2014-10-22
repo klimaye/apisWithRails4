@@ -12,7 +12,15 @@ class ZombieTest < ActiveSupport::TestCase
   end
 
   test "decapitate should set status to dead again" do
+    #using a stub
+    @zombie.weapon.stubs(:slice)
     @zombie.decapitate
     assert_equal "dead again", @zombie.status
+  end
+
+  test "decapitate should call slice" do
+    #using a mock : stub with an assertion that it got called
+    @zombie.weapon.expects(:slice)
+    @zombie.decapitate
   end
 end
