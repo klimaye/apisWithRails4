@@ -29,7 +29,7 @@ class ListingZombiesTest < ActionDispatch::IntegrationTest
     smile = Weapon.new
     smile.name = 'smile'
     zombie = Zombie.create!(name: 'fav', age:18, weapon:smile)
-    get "/zombies/#{zombie.id}"
+    get "/zombies/#{zombie.id}",{},{ 'Accept' => Mime::JSON }
     assert_equal 200, response.status
     zombie_response = json(response.body)
     assert_equal zombie.name, zombie_response[:name]

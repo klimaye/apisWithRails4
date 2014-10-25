@@ -16,8 +16,11 @@ module API
     end
 
     def show
-      zombie = Zombie.find(params[:id])
-      render json: zombie, status: :ok
+      @zombie = Zombie.find(params[:id])
+      respond_to do |format|
+        format.json { render json: @zombie, status: :ok }
+        format.html
+      end
     end
   end
 end
